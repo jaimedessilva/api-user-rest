@@ -1,14 +1,19 @@
 package br.com.projeto.rest.controller;
 
 import java.util.List;
+import javax.transaction.Transactional;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-import br.com.projeto.dao.RepositoryUsuario;
+import br.com.projeto.dao.RepositoryDao;
 import br.com.projeto.domain.Usuario;
 
 /**
@@ -17,47 +22,63 @@ import br.com.projeto.domain.Usuario;
  * Em: 28 de nov de 2020 **/
 
 @Path("/api")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class RestController {
 	
-	RepositoryUsuario repository = new RepositoryUsuario();
+	RepositoryDao repository = new RepositoryDao();
 	
 	@GET
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.TEXT_HTML)
 	public String msg() {
-		return "Camada Rest de recursos de Usuario";
+		return "<h1>API Rest Usuario CRUD</h1>";
 	}
-	
-	@Path ("/user")
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public Usuario user(Usuario usuario) {
-		usuario = new Usuario(4,"Tedson",45);
-		return usuario;
-	}
-	@Path("/lista")
+	/*
+	 *  GET
+	 */
+	@Path("/listar")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Usuario> all (){
-		List<Usuario> lista = repository.lista();
+		List<Usuario> lista = repository.listar();
 		return lista;
 	}
+	@GET
+	@Path ("/listar/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response user(@PathParam("id") int id) {
+		repository.byId(id);
+		return Response.status(Status.OK)
+				.entity(repository.byId(id)).build();			
+	}
+	/*
+	 * POST
+	 */
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response create (Usuario usuario){
-		repository.add(usuario);
-		return Response.status(Status.CREATED)
-				.entity(usuario)
-				.build();
+		repository.create(usuario);
+		return Response.status(Status.CREATED).build();
 	}
-	
+	/*
+	 * PUT
+	 */
+	@Path("/{id}")
+	@PUT
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response update(Usuario usuario) {
-		repository.add(usuario);
-		return Response.status(Response.Status.OK)
-				.entity(usuario)
-				.build();
+		repository.update(usuario);
+		return Response.status(Status.CREATED).build();
 	}
-	
-	public Response delete (Long id) {
-		return Response.status(Response.Status.OK).build();
+	/*
+	 * DELETE
+	 */
+	@Path("/{id}")
+	@DELETE
+	@Produces(MediaType.APPLICATION_JSON)
+	@Transactional
+	public Response delete (@PathParam ("id") int id) {
+		repository.delete(id);
+		return Response.status(Response.Status.ACCEPTED).build();
 	}
 }

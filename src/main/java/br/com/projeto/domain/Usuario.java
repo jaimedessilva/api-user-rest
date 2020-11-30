@@ -1,7 +1,5 @@
 package br.com.projeto.domain;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,23 +12,27 @@ import javax.persistence.Table;
  * Em: 28 de nov de 2020
  * 
  */
+
 @Entity
-@Table (name="tb_usuario")
-public class Usuario implements Serializable {
+@Table (name= "tb_usuario")
+public class Usuario {
 	
-	
-	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String nome;
 	private int idade;
 	
-	/* Construct */
-	public Usuario() {}
+	/* Construct: id, nome, idade*/
 	public Usuario(int id, String nome, int idade) {
-		super();
 		this.id = id;
+		this.nome = nome;
+		this.idade = idade;
+	}
+	/* Construct nome: idade*/
+	public Usuario() {}
+	public Usuario(String nome, int idade) {
+		super();
 		this.nome = nome;
 		this.idade = idade;
 	}
@@ -63,6 +65,6 @@ public class Usuario implements Serializable {
 		return 
 				"id:" + id 
 				+ "\n nome:" + nome 
-				+ "\n idade:" + idade;
+				+ "\n idade:" + idade + "\n";
 	}
 }

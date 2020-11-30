@@ -2,20 +2,24 @@ package br.com.projeto.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import br.com.projeto.db.JpaUtil;
 import br.com.projeto.domain.Usuario;
 
 /**
  * api-rest
- * @author jaime Des
- * Em: 28 de nov de 2020 **/
-
-public class RepositoryUsuario {
+ * @author jaime
+ * 29 de nov de 2020
+ * https://github.com/jaimedessilva/api-user-rest
+ */
+public class RepositoryInMemoria {
 	
 	private final List<Usuario> lista = new ArrayList<Usuario>();
 	/*
 	 * GET Usuario
 	 */
 	public Usuario get(Usuario usuario) {
+		lista.contains(usuario);
 		return usuario;
 	}
 	/*
@@ -35,7 +39,7 @@ public class RepositoryUsuario {
 	 * Create
 	 */
 	public void add(Usuario usuario) {
-		lista.add(usuario);	
+		lista.add(usuario);
 		}
 	/*
 	 * Update
