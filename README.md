@@ -1,9 +1,9 @@
 ## Sistema API Rest 
 
 
-## Teccnologias
+## Tecnologias
 
-Java EE, Jax-RS implementaÃ§Ã£o Jersey
+Java EE, Jax-RS implementação: Jersey
 
 ## Servidor
 
