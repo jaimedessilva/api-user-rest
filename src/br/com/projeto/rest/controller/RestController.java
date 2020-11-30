@@ -1,7 +1,6 @@
 package br.com.projeto.rest.controller;
 
 import java.util.List;
-import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -76,7 +75,6 @@ public class RestController {
 	@Path("/{id}")
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
-	@Transactional
 	public Response delete (@PathParam ("id") int id) {
 		repository.delete(id);
 		return Response.status(Response.Status.ACCEPTED).build();

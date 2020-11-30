@@ -3,12 +3,13 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-	
 	<persistence-unit name="api-rest">
+		<!-- Provider -->
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>br.com.projeto.domain.Usuario</class>
-		
-		<properties>
+			<!-- Classe Entidade -->
+			<class>br.com.projeto.domain.Usuario</class>
+			
+			<properties>
 			
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://172.23.251.234:5433/db_api" />
 			
@@ -29,5 +30,6 @@
 			<property name="hibernate.format_sql" value="false" />
 	
 		</properties>
+	
 	</persistence-unit>
 </persistence>

@@ -3,7 +3,6 @@ package br.com.projeto.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.projeto.db.JpaUtil;
 import br.com.projeto.domain.Usuario;
 
 /**

@@ -2,9 +2,10 @@ package br.com.projeto.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import javax.transaction.Transactional;
+
 import br.com.projeto.db.JpaUtil;
 import br.com.projeto.domain.Usuario;
 
@@ -36,6 +37,7 @@ public class RepositoryDao {
 		query.setParameter(1, id);
 		return (Usuario) query.getSingleResult();
 	}
+	@SuppressWarnings("unchecked")
 	public List<Usuario> listar() {
 
 		String sql = "select * from tb_usuario  order by id asc";
