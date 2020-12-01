@@ -45,7 +45,7 @@ public class RestController {
 	@GET
 	@Path ("/listar/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response user(@PathParam("id") int id) {
+	public Response usuario(@PathParam("id") int id) {
 		repository.byId(id);
 		return Response.status(Status.OK)
 				.entity(repository.byId(id)).build();			

@@ -11,7 +11,7 @@
 			
 			<properties>
 			
-			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://172.23.251.234:5433/db_api" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5433/db_api" />
 			
 			<property name="javax.persistence.jdbc.user" value="postgres" />
 			

@@ -7,6 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.hibernate.tool.schema.internal.HibernateSchemaManagementTool;
+
 /**
  * api-rest
  * @author jaime
@@ -21,11 +23,13 @@ public class JpaUtil {
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("api-rest");
 		EntityManager em = emf.createEntityManager();
+		
 		return em;
 	}
 	/* Construct */
 	public JpaUtil() {
 		System.out.println("Connect.....");
 		getEntityManager();
+		
 	}
 }

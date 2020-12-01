@@ -1,6 +1,7 @@
 package br.com.projeto;
 
 import br.com.projeto.dao.RepositoryDao;
+import br.com.projeto.domain.Usuario;
 
 public class M {
 
@@ -8,11 +9,10 @@ public class M {
 		
 		RepositoryDao repository = new RepositoryDao();
 
-//		repository.add(new Usuario("Ted Denson",35));
-//		repository.add(new Usuario("Carlton Banks",39));
-//		repository.add(new Usuario("Rimory Dor",30));
-		
-//		repository.add(new Usuario("Tadeu Santos",30));
+		repository.create(new Usuario("Ted Denson",35));
+		repository.create(new Usuario("Carlton Banks",39));
+		repository.create(new Usuario("Rimory Dor",30));
+		repository.create(new Usuario("Tadeu Santos",30));
 		
 		
 		//repository.create(new Usuario("Morais Santos",35));
@@ -28,8 +28,10 @@ public class M {
 		
 		//repository.update(new Usuario (5,"Romeu Zema",37));
 		
-		repository.delete(9);
+		//repository.delete(9);
 		
+		
+		//repository.listar();
 	}
 
 }
