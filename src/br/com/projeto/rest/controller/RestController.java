@@ -62,7 +62,6 @@ public class RestController {
 	/*
 	 * PUT
 	 */
-	@Path("/{id}")
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response update(Usuario usuario) {

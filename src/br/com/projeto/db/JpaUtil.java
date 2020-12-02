@@ -18,18 +18,20 @@ import org.hibernate.tool.schema.internal.HibernateSchemaManagementTool;
 
 public class JpaUtil {
 	
+	EntityManagerFactory emf = Persistence.createEntityManagerFactory("api-rest");
+	EntityManager em;
+	
 	/* EntityManager */
 	public EntityManager getEntityManager() {
-		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("api-rest");
-		EntityManager em = emf.createEntityManager();
-		
-		return em;
+		return em = emf.createEntityManager();
 	}
 	/* Construct */
 	public JpaUtil() {
 		System.out.println("Connect.....");
 		getEntityManager();
 		
+	}
+	public void JpaClose() {
+		em.close();
 	}
 }

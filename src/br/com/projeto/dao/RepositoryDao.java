@@ -43,15 +43,17 @@ public class RepositoryDao {
 		String sql = "select * from tb_usuario  order by id asc";
 		Query query = db.createNativeQuery(sql, Usuario.class);
 		ls = query.getResultList();
+		jpa.JpaClose();
 		return ls;
 	}
 	/*
 	 * CREATE
 	 */
 	public void create(Usuario usuario) {
-		db.getTransaction().begin();
-		db.persist(usuario);
-		db.getTransaction().commit();
+			db.getTransaction().begin();
+			db.persist(usuario);
+			db.getTransaction().commit();
+			jpa.JpaClose();
 	}
 
 	/*
@@ -61,6 +63,7 @@ public class RepositoryDao {
 		db.getTransaction().begin();
 		db.merge(usuario);
 		db.getTransaction().commit();
+		db.close();
 		return usuario;
 
 	}
@@ -72,6 +75,7 @@ public class RepositoryDao {
 		db.getTransaction().begin();
 		db.remove(usuario);
 		db.getTransaction().commit();
+		jpa.JpaClose();
 	}
 	
 }
